@@ -4,16 +4,43 @@
       "id": "1242543801:1242543801",
       "data": {
         "__scenes": {
-          "current": "getData",
+          "current": "adminMenu",
           "state": {}
         },
-        "user": false
+        "user": {
+          "info": {
+            "type": "e",
+            "id": "1242543801"
+          },
+          "text": "\n#employer #ish_kerak\n\n<b>👤 Ism: </b> Abdurahmon Abduraimov\n<b>📞 Telefon: </b> 998901427395\n<b>🏠 Joylashuv: </b> Qarshi\n<b>📧 Email: </b> abduraimovabdurahmon@gmail.com\n<b>📅 Yoshi: </b> 19\n<b>👨‍👩‍👧‍👦 Jinsi: </b> Erkak\n<b>📱 Telegram: </b> @abdurakhmon_one\n<b>💰 Narxi: </b> 669498 so'm\n<b>📚 Mutaxassisligi: </b> Fullstack Developer\n<b>📝 Ish tajribasi: </b> junior\n<b>🕒 Murojaat vaqti: </b> 05:25 - 21:45\n<b>✏️ Ma'lumot: </b> <i>Salom dunyo</i>\n\n<b>👉🏻 <a href=\"https://t.me/vacansy_uz\">Vacansy Uz</a></b>\n    ",
+          "data": {
+            "name": "Abdurahmon Abduraimov",
+            "speciality": "Fullstack Developer",
+            "phone": "998901427395",
+            "email": "abduraimovabdurahmon@gmail.com",
+            "telegram": "@abdurakhmon_one",
+            "location": "Qarshi, Uzbekistan"
+          }
+        },
+        "data": []
       }
     },
     {
-      "id": "-1001565597122:1242543801",
+      "id": "5838565884:5838565884",
       "data": {
-        "__scenes": {}
+        "__scenes": {
+          "current": "mainScene",
+          "state": {}
+        }
+      }
+    },
+    {
+      "id": "5698087255:5698087255",
+      "data": {
+        "__scenes": {
+          "current": "mainScene",
+          "state": {}
+        }
       }
     }
   ]

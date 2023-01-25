@@ -29,6 +29,7 @@ mainScene.enter(async (ctx) => {
 
 mainScene.on('callback_query', async (ctx) => {
     try {
+        await ctx.replyWithChatAction('typing');
         if(ctx.callbackQuery.data == 'create'){
             if(await checkAccess(ctx)){
                 const check = await pool.query('SELECT * FROM employers WHERE user_id = $1', [ctx.from.id]);

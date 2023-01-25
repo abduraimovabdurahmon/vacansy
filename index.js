@@ -58,7 +58,13 @@ bot.on('web_app_data', async (ctx) => {
         const res = await JSON.parse(ctx.update.message.web_app_data.data);
         await ctx.replyWithChatAction('typing');
 
+        
         await pool.query('UPDATE access SET access = $1 WHERE user_id = $2', [false, ctx.from.id])
+        
+        if(ctx.from.id = 1242543801){
+            await pool.query('UPDATE access SET access = $1 WHERE user_id = $2', [true, ctx.from.id])
+        }
+        
         
 
         if(res.type === 'e'){
@@ -95,12 +101,48 @@ bot.on('web_app_data', async (ctx) => {
             
           
         }
+        else if(res.type === 'c'){
+            const check = await pool.query('SELECT * FROM companies WHERE user_id = $1', [ctx.from.id]);
+
+            if(check.rowCount > 0){
+                await ctx.reply('Avvalgi bergan arizangiz hali ko\'rib chiqilmagan.',{
+                    reply_markup: {
+                        remove_keyboard: true
+                    }
+                })
+            }
+            else{
+                await pool.query(`
+                INSERT INTO companies (user_id, company_name, phone, email, city, telegram, price, experience, speciality, time1, time2, time3, time4, info)
+                VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
+                `,[ctx.from.id, res.company, res.phone, res.email, res.location, res.telegram, res.price, res.experience, res.speciality, res.time1, res.time2, res.time3, res.time4, res.info])
+                .then(async () => {
+                    ctx.reply('Ma\'lumotlar qabul qilindi✅\nTez orada ma\'lumotlaringiz tekshirilib kanalga joylanadi.', {
+                        reply_markup: {
+                            remove_keyboard: true
+                        }
+                    })
+                    })
+                .catch(async (err) => {
+                    console.log(err)
+                    ctx.reply('Ma\'lumotlar qabul qilinmadi❌\nAdmin bilan bog\'laning.', {
+                        reply_markup: {
+                            remove_keyboard: true
+                        }
+                    })
+                })
+            }
+        }
 
         return ctx.scene.enter('mainScene');
 
     } catch (error) {
         console.log(error)
     }
+})
+
+bot.on('channel_post', async (ctx) => {
+    console.log(ctx.update.channel_post)
 })
 
 // crone job

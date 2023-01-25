@@ -6,8 +6,8 @@ const employer = async (data) => {
 
     try {
         
-        registerFont('./fonts/Madina/font.ttf', { family: 'madina' });
-        registerFont('./fonts/Arvo/font.ttf', { family: 'arvo' });
+
+        await registerFont(path.join(__dirname, './fonts/Madina', 'font.ttf'), { family: 'madina'})
 
         const image = await loadImage(await fs.readFileSync(path.join(__dirname, 'input', 'employer.png')));
 
@@ -17,7 +17,7 @@ const employer = async (data) => {
         ctx.drawImage(image, 0, 0, image.width, image.height)
 
         // write name
-        ctx.font = '35px arvo';
+        ctx.font = '35px arial';
         ctx.fillStyle = '#000000';
         ctx.fillText( data.name, 70, 135);
 
@@ -66,8 +66,8 @@ const company = async (data) => {
     
     try {
         
-        registerFont('./fonts/Madina/font.ttf', { family: 'madina' });
-        registerFont('./fonts/Arvo/font.ttf', { family: 'arvo' });
+
+        await registerFont(path.join(__dirname, './fonts/Madina', 'font.ttf'), { family: 'madina'})
 
         const image = await loadImage(await fs.readFileSync(path.join(__dirname, 'input', 'company.png')));
 
@@ -78,14 +78,14 @@ const company = async (data) => {
 
 
         // write name
-        ctx.font = '35px arvo';
-        ctx.fillStyle = 'WhiteSmoke';
+        ctx.font = '35px Arial';
+        ctx.fillStyle = 'White';
         ctx.fillText( data.name, 110, 165);
 
         // phone number
         ctx.font = '20px madina';
         ctx.fillStyle = 'WhiteSmoke';
-        ctx.fillText( data.phone, 130, 310);
+        ctx.fillText( data.phone.toString().replace(/(\d{3})(\d{2})(\d{3})(\d{2})(\d{2})/, '+$1 $2 $3 $4 $5'), 130, 310);
 
         // email
         ctx.font = '20px madina';
@@ -116,23 +116,27 @@ const company = async (data) => {
 }
 
 
-// const dataEmployer = {
-//     name: 'Abdurakhmon Abduraimov',
-//     speciality: 'Frontend developer',
-//     phone: 998901234567,
-//     email: 'abduraimovabdurahmon@gmail.com',
-//     telegram: '@abdurakhmon_04',
-//     location: 'Tashkent, Uzbekistan'
-// }
+const dataEmployer = {
+    name: 'Abdurakhmon Abduraimov',
+    speciality: 'Frontend developer',
+    phone: 998901234567,
+    email: 'abdurssssaimmon@gmail.com',
+    telegram: '@abdurakhmon_04',
+    location: 'Tashkent, Uzbekistan'
+}
 
-// const dataCompany = {
-//     name: 'Data learning center',
-//     phone: '+998 90 123 45 67',
-//     email: 'datalearningcenter@gmail.com',
-//     telegram: '@datalearningcenter',
-//     location: 'Xorazm, Uzbekistan'
-// }
 
+
+const dataCompany = {
+    name: 'Data learning center',
+    phone: '+998 90 123 45 67',
+    email: 'datalearningcenter@gmail.com',
+    telegram: '@datalearningcenter',
+    location: 'Xorazm, Uzbekistan'
+}
+
+company(dataCompany)
+// employer(dataEmployer)
 
 
 module.exports = {employer, company}

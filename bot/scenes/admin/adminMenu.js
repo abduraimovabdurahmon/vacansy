@@ -40,8 +40,9 @@ adminMenu.on('callback_query', async (ctx) => {
 
     try {
         if(ctx.callbackQuery.data == 'count'){
-            const count = await pool.query('SELECT count(*) as soni FROM employers');
-            await ctx.answerCbQuery(`E'lonlar soni: ${count.rows[0].soni}`, {show_alert: true});
+            const count = await pool.query('SELECT count(*) as soni FROM employers;');
+            const count2 = await pool.query('SELECT count(*) as soni FROM companies;');
+            await ctx.answerCbQuery(`E'lonlar soni: ${count.rows[0].soni}\nKompaniyalar soni: ${count2.rows[0].soni}`, {show_alert: true});
         }
         else if(ctx.callbackQuery.data == 'start'){
             await ctx.deleteMessage();

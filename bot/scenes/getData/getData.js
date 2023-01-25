@@ -13,13 +13,13 @@ getData.enter(async (ctx) => {
                         {
                             text: 'Xodim',
                             web_app: {
-                                url: 'https://sparkling-kataifi-789d99.netlify.app/'
+                                url: 'https://web-app-vacansy-uz-bot-for-employers.netlify.app/'
                             }
                         },
                         {
                             text: 'Kompaniya',
                             web_app: {
-                                url: 'https://sparkling-kataifi-789d99.netlify.app/'
+                                url: 'https://web-app-vacansy-uz-bot-for-companies.netlify.app/'
                             }
                         }
                     ]

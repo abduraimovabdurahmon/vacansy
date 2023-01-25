@@ -35,6 +35,26 @@ CREATE TABLE IF NOT EXISTS employers(
     PRIMARY KEY (user_id)
 );
 
+
+-- company 
+CREATE TABLE IF NOT EXISTS companies(
+    user_id VARCHAR(50) NOT NULL,
+    company_name VARCHAR(50) NOT NULL,
+    phone VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    city VARCHAR(50) NOT NULL,
+    telegram VARCHAR(50) NOT NULL,
+    price VARCHAR(50) NOT NULL,
+    experience VARCHAR(50) NOT NULL,
+    speciality VARCHAR(75) NOT NULL,
+    time1 VARCHAR(20) NOT NULL,
+    time2 VARCHAR(20) NOT NULL,
+    time3 VARCHAR(20) NOT NULL,
+    time4 VARCHAR(20) NOT NULL,
+    info VARCHAR(255) NOT NULL,
+    PRIMARY KEY (user_id)
+);
+
 -- select first element from table
 SELECT * FROM employers ORDER BY user_id ASC LIMIT 1;
 

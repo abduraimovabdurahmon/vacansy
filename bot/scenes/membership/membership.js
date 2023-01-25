@@ -6,6 +6,7 @@ const membership = new BaseScene('membership');
 
 membership.enter(async (ctx) => {
     try {
+        await ctx.replyWithChatAction('typing');
         if(await getMyChatMember(ctx)){
             return ctx.scene.enter('mainScene');
         }
@@ -36,7 +37,7 @@ membership.enter(async (ctx) => {
 
 membership.on('callback_query', async (ctx) => {
     try {
-        
+        await ctx.replyWithChatAction('typing');
         if(ctx.callbackQuery.data == 'check'){
             if(await getMyChatMember(ctx)){
                 await ctx.deleteMessage();
